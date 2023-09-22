@@ -13,13 +13,6 @@ jobs:
 
     env:
       MY_JOB_VARIABLE: "This is a job-level variable"
-
-  my_job:
-    runs-on: ubuntu-latest
-
-    env:
-      MY_JOB_VARIABLE: "This is a job-level variable"
-
     steps:
       - name: My Step
         env:
