@@ -16,3 +16,36 @@ jobs:
     - name: Run a script
       run: |
         echo "Hello, GitHub Actions!"
+name: Workflow with Variables
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  MY_WORKFLOW_VARIABLE: "This is a workflow-level variable"
+jobs:
+  my_job:
+    runs-on: ubuntu-latest
+    env:
+      MY_JOB_VARIABLE: "This is a job-level variable"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      # Add more steps here
+jobs:
+  my_job:
+    runs-on: ubuntu-latest
+    env:
+      MY_JOB_VARIABLE: "This is a job-level variable"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: My Step
+        env:
+          MY_STEP_VARIABLE: "This is a step-level variable"
+        run: |
+          echo "Workflow variable: $MY_WORKFLOW_VARIABLE"
+          echo "Job variable: $MY_JOB_VARIABLE"
+          echo "Step variable: $MY_STEP_VARIABLE"
